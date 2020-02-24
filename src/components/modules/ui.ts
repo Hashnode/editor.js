@@ -582,7 +582,7 @@ export default class UI extends Module {
     }
 
     event.stopImmediatePropagation();
-    event.stopPropagation();
+    // event.stopPropagation();
 
     if (!this.Editor.BlockManager.currentBlock) {
       this.Editor.BlockManager.insert();
