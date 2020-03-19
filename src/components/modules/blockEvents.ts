@@ -373,6 +373,11 @@ export default class BlockEvents extends Module {
       return;
     }
 
+    // Don't let the codeblock mismerge with previous block 
+    if (currentBlock.name === 'code') {
+      return;
+    }
+    
     const isFirstBlock = BlockManager.currentBlockIndex === 0;
     const canMergeBlocks = Caret.isAtStart &&
       SelectionUtils.isCollapsed &&
