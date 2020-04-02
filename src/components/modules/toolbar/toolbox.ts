@@ -20,15 +20,15 @@ export default class Toolbox extends Module {
   /**
    * CSS styles
    * @return {{toolbox: string, toolboxButton string, toolboxButtonActive: string,
-   * toolboxButtonHashnodeActive: string,
+   * toolboxButtonApistackActive: string,
    * toolboxOpened: string, tooltip: string, tooltipShown: string, tooltipShortcut: string}}
    */
   get CSS() {
     return  {
       toolbox: 'ce-toolbox',
       toolboxButton: 'ce-toolbox__button',
-      toolboxButtonHashnode: 'ce-toolbox__button-hashnode',
-      toolboxButtonHashnodeActive : 'ce-toolbox__button-hashnode--active',
+      toolboxButtonApistack: 'ce-toolbox__button-apistack',
+      toolboxButtonApistackActive : 'ce-toolbox__button-apistack--active',
       toolboxButtonActive : 'ce-toolbox__button--active',
       toolboxOpened: 'ce-toolbox--opened',
       openedToolbarHolderModifier: 'codex-editor--toolbox-opened',
@@ -147,9 +147,9 @@ export default class Toolbox extends Module {
     }
   }
 
-  private makeHashnodeToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
-    button.innerHTML += `<div class="ce-toolbox__button-hashnode__icon">${buttonContent.icon}</div>
-    <span class="ce-toolbox__button-hashnode__name">${buttonContent.name}</span>`;
+  private makeapistackToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
+    button.innerHTML += `<div class="ce-toolbox__button-apistack__icon">${buttonContent.icon}</div>
+    <span class="ce-toolbox__button-apistack__name">${buttonContent.name}</span>`;
     return button;
   }
 
@@ -187,7 +187,7 @@ export default class Toolbox extends Module {
 
     const userToolboxSettings = this.Editor.Tools.getToolSettings(toolName)[userSettings.TOOLBOX] || {};
 
-    const button = this.makeHashnodeToolboxButton($.make('li', [ this.CSS.toolboxButtonHashnode ]), {
+    const button = this.makeapistackToolboxButton($.make('li', [ this.CSS.toolboxButtonApistack ]), {
       name: toolName,
       icon: userToolboxSettings.icon || toolToolboxSettings.icon,
     });
@@ -282,7 +282,7 @@ export default class Toolbox extends Module {
     const tools = Array.from(this.nodes.toolbox.childNodes) as HTMLElement[];
     this.flipper = new Flipper({
       items: tools,
-      focusedItemClass: this.CSS.toolboxButtonHashnodeActive,
+      focusedItemClass: this.CSS.toolboxButtonApistackActive,
     });
   }
 

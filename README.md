@@ -1,4 +1,4 @@
-# Editor.js  Hashnode
+# Editor.js + Apistack
 
 Build instructions
 

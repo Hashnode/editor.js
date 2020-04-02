@@ -50,9 +50,9 @@
   --toolbox-buttons-size: 34px;
 
   /**
-   * Hashnode-Override : Toolbar Plus Button and Toolbox buttons height and width
+   * Apistack-Override : Toolbar Plus Button and Toolbox buttons height and width
    */
-  --toolbox-buttons-size-hashnode: 60px;
+  --toolbox-buttons-size-apistack: 60px;
 
   /**
    * Confirm deletion bg
@@ -112,12 +112,12 @@
 
   };
 
-  --toolbox-button-hashnode: {
+  --toolbox-button-apistack: {
     color: var(--grayText);
     cursor: pointer;
     width: 50%;
-    /* width: var(--toolbox-buttons-size-hashnode); */
-    height: var(--toolbox-buttons-size-hashnode);
+    /* width: var(--toolbox-buttons-size-apistack); */
+    height: var(--toolbox-buttons-size-apistack);
     display: inline-flex;
     flex-direction: column;
     list-style-type: none;
@@ -126,7 +126,7 @@
     text-align: center;
     border: 1px solid #000;
 
-    /* Hashnode overrides start*/
+    /* apistack overrides start*/
     &__name {
       font-weight: bold;
       font-size: 12px;
@@ -139,7 +139,7 @@
       width: 12px;
       height: 14px;
     }
-    /* Hashnode overrides end*/
+    /* apistack overrides end*/
 
     &:hover,
     &--active {

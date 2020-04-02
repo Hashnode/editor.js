@@ -1,8 +1,8 @@
 .ce-toolbox {
-  /* Hashnode override start*/
+  /* apistack override start*/
   max-width: 150px;
   width: 100%;
-  /* Hashnode override end*/
+  /* apistack override end*/
   position: absolute;
   visibility: hidden;
   transition: opacity 100ms ease;
@@ -24,8 +24,8 @@
     transform: translate3d(0px, 0, 0px)!important;
   }
 
-  &__button-hashnode {
-    @apply --toolbox-button-hashnode;
+  &__button-apistack {
+    @apply --toolbox-button-apistack;
     flex-shrink: 0;
   }
 
