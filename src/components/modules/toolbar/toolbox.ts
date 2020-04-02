@@ -20,16 +20,18 @@ export default class Toolbox extends Module {
   /**
    * CSS styles
    * @return {{toolbox: string, toolboxButton string, toolboxButtonActive: string,
+   * toolboxButtonApistackActive: string,
    * toolboxOpened: string, tooltip: string, tooltipShown: string, tooltipShortcut: string}}
    */
   get CSS() {
     return  {
       toolbox: 'ce-toolbox',
       toolboxButton: 'ce-toolbox__button',
+      toolboxButtonApistack: 'ce-toolbox__button-apistack',
+      toolboxButtonApistackActive : 'ce-toolbox__button-apistack--active',
       toolboxButtonActive : 'ce-toolbox__button--active',
       toolboxOpened: 'ce-toolbox--opened',
       openedToolbarHolderModifier: 'codex-editor--toolbox-opened',
-
       buttonTooltip: 'ce-toolbox-button-tooltip',
       buttonShortcut: 'ce-toolbox-button-tooltip__shortcut',
     };
@@ -145,6 +147,12 @@ export default class Toolbox extends Module {
     }
   }
 
+  private makeapistackToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
+    button.innerHTML += `<div class="ce-toolbox__button-apistack__icon">${buttonContent.icon}</div>
+    <span class="ce-toolbox__button-apistack__name">${buttonContent.name}</span>`;
+    return button;
+  }
+
   /**
    * Append Tool to the Toolbox
    *
@@ -179,10 +187,12 @@ export default class Toolbox extends Module {
 
     const userToolboxSettings = this.Editor.Tools.getToolSettings(toolName)[userSettings.TOOLBOX] || {};
 
-    const button = $.make('li', [ this.CSS.toolboxButton ]);
+    const button = this.makeapistackToolboxButton($.make('li', [ this.CSS.toolboxButtonApistack ]), {
+      name: toolName,
+      icon: userToolboxSettings.icon || toolToolboxSettings.icon,
+    });
 
     button.dataset.tool = toolName;
-    button.innerHTML = userToolboxSettings.icon || toolToolboxSettings.icon;
 
     $.append(this.nodes.toolbox, button);
 
@@ -272,7 +282,7 @@ export default class Toolbox extends Module {
     const tools = Array.from(this.nodes.toolbox.childNodes) as HTMLElement[];
     this.flipper = new Flipper({
       items: tools,
-      focusedItemClass: this.CSS.toolboxButtonActive,
+      focusedItemClass: this.CSS.toolboxButtonApistackActive,
     });
   }
 

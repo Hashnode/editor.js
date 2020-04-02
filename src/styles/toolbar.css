@@ -60,8 +60,7 @@
     }
   }
 
-  &__plus,
-  .ce-toolbox {
+  &__plus, .ce-toolbox{
     top: 50%;
     transform: translateY(-50%);
   }
