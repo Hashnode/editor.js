@@ -147,7 +147,7 @@ export default class Toolbox extends Module {
     }
   }
 
-  private makeHashnodeToolboxButton(button: HTMLElement, buttonContent: object): HTMLElement {
+  private makeHashnodeToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
     button.innerHTML += `<div class="ce-toolbox__button-hashnode__icon">${buttonContent.icon}</div>
     <span class="ce-toolbox__button-hashnode__name">${buttonContent.name}</span>`;
     return button;

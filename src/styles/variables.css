@@ -147,7 +147,7 @@
     }
 
     &--active{
-      /* animation: bounceIn 0.25s 1; */
+      animation: bounceIn 0.25s 1;
       animation-fill-mode: forwards;
     }
 
