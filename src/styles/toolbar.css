@@ -60,10 +60,9 @@
     }
   }
 
-  &__plus,
-  .ce-toolbox {
+  &__plus{
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
   }
 
   /**

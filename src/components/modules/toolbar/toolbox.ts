@@ -20,16 +20,18 @@ export default class Toolbox extends Module {
   /**
    * CSS styles
    * @return {{toolbox: string, toolboxButton string, toolboxButtonActive: string,
+   * toolboxButtonHashnodeActive: string,
    * toolboxOpened: string, tooltip: string, tooltipShown: string, tooltipShortcut: string}}
    */
   get CSS() {
     return  {
       toolbox: 'ce-toolbox',
       toolboxButton: 'ce-toolbox__button',
+      toolboxButtonHashnode: 'ce-toolbox__button-hashnode',
+      toolboxButtonHashnodeActive : 'ce-toolbox__button-hashnode--active',
       toolboxButtonActive : 'ce-toolbox__button--active',
       toolboxOpened: 'ce-toolbox--opened',
       openedToolbarHolderModifier: 'codex-editor--toolbox-opened',
-
       buttonTooltip: 'ce-toolbox-button-tooltip',
       buttonShortcut: 'ce-toolbox-button-tooltip__shortcut',
     };
@@ -145,6 +147,12 @@ export default class Toolbox extends Module {
     }
   }
 
+  private makeHashnodeToolboxButton(button: HTMLElement, buttonContent: object): HTMLElement {
+    button.innerHTML += `<div class="ce-toolbox__button-hashnode__icon">${buttonContent.icon}</div>
+    <span class="ce-toolbox__button-hashnode__name">${buttonContent.name}</span>`;
+    return button;
+  }
+
   /**
    * Append Tool to the Toolbox
    *
@@ -179,10 +187,12 @@ export default class Toolbox extends Module {
 
     const userToolboxSettings = this.Editor.Tools.getToolSettings(toolName)[userSettings.TOOLBOX] || {};
 
-    const button = $.make('li', [ this.CSS.toolboxButton ]);
+    const button = this.makeHashnodeToolboxButton($.make('li', [ this.CSS.toolboxButtonHashnode ]), {
+      name: toolName,
+      icon: userToolboxSettings.icon || toolToolboxSettings.icon,
+    });
 
     button.dataset.tool = toolName;
-    button.innerHTML = userToolboxSettings.icon || toolToolboxSettings.icon;
 
     $.append(this.nodes.toolbox, button);
 
@@ -272,7 +282,7 @@ export default class Toolbox extends Module {
     const tools = Array.from(this.nodes.toolbox.childNodes) as HTMLElement[];
     this.flipper = new Flipper({
       items: tools,
-      focusedItemClass: this.CSS.toolboxButtonActive,
+      focusedItemClass: this.CSS.toolboxButtonHashnodeActive,
     });
   }
 

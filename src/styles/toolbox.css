@@ -1,10 +1,15 @@
 .ce-toolbox {
+  /* Hashnode override start*/
+  max-width: 150px;
+  width: 100%;
+  /* Hashnode override end*/
   position: absolute;
   visibility: hidden;
   transition: opacity 100ms ease;
   will-change: opacity;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
   @media (--mobile){
     position: static;
@@ -16,12 +21,18 @@
   &--opened {
     opacity: 1;
     visibility: visible;
+    transform: translate3d(0px, 0, 0px)!important;
   }
 
-  &__button {
-    @apply --toolbox-button;
+  &__button-hashnode {
+    @apply --toolbox-button-hashnode;
     flex-shrink: 0;
   }
+
+  /* &__button {
+    @apply --toolbox-button;
+    flex-shrink: 0;
+  } */
 }
 
 .ce-toolbox-button-tooltip {
