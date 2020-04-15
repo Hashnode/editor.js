@@ -27,8 +27,8 @@ export default class Toolbox extends Module {
     return  {
       toolbox: 'ce-toolbox',
       toolboxButton: 'ce-toolbox__button',
-      toolboxButtonApistack: 'ce-toolbox__button-apistack',
-      toolboxButtonApistackActive : 'ce-toolbox__button-apistack--active',
+      toolboxButtonApistack: 'editor-toolbar-button',
+      toolboxButtonApistackActive : 'editor-toolbar-button-active',
       toolboxButtonActive : 'ce-toolbox__button--active',
       toolboxOpened: 'ce-toolbox--opened',
       openedToolbarHolderModifier: 'codex-editor--toolbox-opened',
@@ -148,8 +148,8 @@ export default class Toolbox extends Module {
   }
 
   private makeapistackToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
-    button.innerHTML += `<div class="ce-toolbox__button-apistack__icon">${buttonContent.icon}</div>
-    <span class="ce-toolbox__button-apistack__name">${buttonContent.name}</span>`;
+    button.innerHTML += `<div class="editor-toolbar-button-icon">${buttonContent.icon}</div>
+    <span class="editor-toolbar-button-name">${buttonContent.name}</span>`;
     return button;
   }
 
@@ -187,7 +187,7 @@ export default class Toolbox extends Module {
 
     const userToolboxSettings = this.Editor.Tools.getToolSettings(toolName)[userSettings.TOOLBOX] || {};
 
-    const button = this.makeapistackToolboxButton($.make('li', [ this.CSS.toolboxButtonApistack ]), {
+    const button = this.makeapistackToolboxButton($.make('div', [ this.CSS.toolboxButtonApistack ]), {
       name: toolName,
       icon: userToolboxSettings.icon || toolToolboxSettings.icon,
     });
