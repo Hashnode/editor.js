@@ -378,6 +378,10 @@ export default class BlockEvents extends Module {
       return;
     }
 
+    if (currentBlock.name === 'simpleCode') {
+      return;
+    }
+
     const isFirstBlock = BlockManager.currentBlockIndex === 0;
     const canMergeBlocks = Caret.isAtStart &&
       SelectionUtils.isCollapsed &&
