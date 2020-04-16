@@ -419,10 +419,6 @@ export default class Caret extends Module {
   public navigatePrevious(force: boolean = false): boolean {
     const {currentBlock, previousContentfulBlock} = this.Editor.BlockManager;
 
-    if (currentBlock.name === 'simpleCode') {
-      return false;
-    }
-
     if (!currentBlock) {
       return false;
     }
@@ -436,6 +432,9 @@ export default class Caret extends Module {
     if (force || this.isAtStart) {
       /** If previous Tool`s input exists, focus on it. Otherwise set caret to the previous Block */
       if (!previousInput) {
+        // if (currentBlock.name === 'simpleCode') {
+        //   return false;
+        // }
         this.setToBlock( previousContentfulBlock, this.positions.END );
       } else {
         this.setToInput(previousInput, this.positions.END);
