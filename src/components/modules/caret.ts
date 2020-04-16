@@ -419,6 +419,10 @@ export default class Caret extends Module {
   public navigatePrevious(force: boolean = false): boolean {
     const {currentBlock, previousContentfulBlock} = this.Editor.BlockManager;
 
+    if (currentBlock.name === 'simpleCode') {
+      return false;
+    }
+
     if (!currentBlock) {
       return false;
     }
