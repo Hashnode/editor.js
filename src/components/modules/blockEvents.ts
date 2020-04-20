@@ -141,9 +141,13 @@ export default class BlockEvents extends Module {
 
     const { BlockManager, Tools, InlineToolbar, ConversionToolbar } = this.Editor;
     const currentBlock = BlockManager.currentBlock;
-
+    const byPassTabInPlugins = ['code', 'simpleCode', 'table'];
     if (!currentBlock) {
       return;
+    }
+
+    for (const plugin of byPassTabInPlugins) {
+      if (plugin === currentBlock.name) { return; }
     }
 
     const canOpenToolbox = Tools.isInitial(currentBlock.tool) && currentBlock.isEmpty;
