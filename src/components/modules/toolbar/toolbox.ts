@@ -149,7 +149,7 @@ export default class Toolbox extends Module {
 
   private makeapistackToolboxButton(button: HTMLElement, buttonContent: any): HTMLElement {
     button.innerHTML += `<div class="editor-toolbar-button-icon">${buttonContent.icon}</div>
-    <span class="editor-toolbar-button-name">${buttonContent.name}</span>`;
+    <span class="editor-toolbar-button-name">${buttonContent.customButtonName || buttonContent.name}</span>`;
     return button;
   }
 
@@ -190,6 +190,7 @@ export default class Toolbox extends Module {
     const button = this.makeapistackToolboxButton($.make('div', [ this.CSS.toolboxButtonApistack ]), {
       name: toolName,
       icon: userToolboxSettings.icon || toolToolboxSettings.icon,
+      customButtonName: userToolboxSettings.customButtonName || toolToolboxSettings.customButtonName || null,
     });
 
     button.dataset.tool = toolName;
